@@ -63,10 +63,11 @@ def webpage(company):
 
         for text in temp:
             info = {}
-            info['company'] = name
-            info['title'] = text.get_text()
-            info['url'] = text.get("href")
-            result.append(info)
+            if "시행안내" in text.get_text():
+                info['company'] = name
+                info['title'] = text.get_text()
+                info['url'] = text.get("href")
+                result.append(info)
 
     elif company == "kakao_games":
         name = "카카오 게임즈"
