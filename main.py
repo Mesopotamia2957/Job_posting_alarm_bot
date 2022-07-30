@@ -14,14 +14,14 @@ pschool = "https://www.patentschool.co.kr/post/list.php?g=mo&cate=1" # 윤태웅
 service_data = [{'user': '박재욱', 'company': ['kakao_enterprise'],            'chat_name': "박재욱"},
                 {'user': '윤태웅', 'company': ['pschool'],                     'chat_name': "변리사스쿨 모의고사 알림"}]
 
-date = datetime.today()
+date = datetime.now().date()
 
 
 
 def function():
     for data in service_data:
         company = data['company']
-        print(company)
+        # print(company)
 
         for c in company:
             result = crawling.webpage(c)
@@ -38,6 +38,7 @@ def function():
         kakaotalk.send(data['chat_name'], message)
 
 if __name__ == '__main__':
-    schedule.every().day.at("20:19").do(function)
-    while True:
-        schedule.run_pending()
+    function()
+    # schedule.every().day.at("20:19").do(function)
+    # while True:
+    #     schedule.run_pending()
