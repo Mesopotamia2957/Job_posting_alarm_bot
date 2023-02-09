@@ -1,18 +1,17 @@
 import crawling, kakaotalk
 from datetime import datetime
-import schedule, time
+import schedule
 
-target_dic = [
-            {'company': 'kakao_enterprise', 'name': '카카오 엔터프라이즈', 'link': "https://careers.kakaoenterprise.com/go/Category_All/546844/"},
-            {'company': 'pschool', 'name': '변리사스쿨 모의고사', 'link': "https://www.patentschool.co.kr/post/list.php?g=mo&cate=1"}
-             ]
+kakao_enterprise = "https://careers.kakaoenterprise.com/go/Category_All/546844/"
+pschool = "https://www.patentschool.co.kr/post/list.php?g=mo&cate=1"  # 윤태웅 변리사스쿨 모의고사
 
 
-service_data = [{'user': '박재욱', 'company': ['kakao_enterprise'],            'chat_name': "박재욱"},
-                {'user': '윤태웅', 'company': ['pschool'],                     'chat_name': "변리사스쿨 모의고사 알림"}]
+service_data = [{'user': '박재욱', 'company': ['kakao_enterprise', 'naver'], 'chat_name': "~_~ ෆ"},
+                {'user': '윤태웅', 'company': ['pschool'], 'chat_name': "변리사스쿨 모의고사 알림"}]
+
+# service_data = [{'user': '박재욱', 'company': ['kakao_enterprise', 'naver'], 'chat_name': "~_~ ෆ"}]
 
 date = datetime.now().date()
-
 
 
 def function():
@@ -24,20 +23,20 @@ def function():
             result = crawling.webpage(c)
 
         message = '%s 정보입니다.\n' % date
-
         for info in result:
             if data['chat_name'] == "변리사스쿨 모의고사 알림":
                 temp = ('게시글 : ' + info['title'] + '\n' + '링크 : ' + info['url'] + '\n\n')
                 message += temp
             else:
-                temp = ('기업 : ' + info['company'] + '\n' + '공고명 : ' + info['title'] + '\n' + '링크 : ' + info['url'] + '\n\n')
+                temp = ('기업 : ' + info['company'] + '\n' + '공고명 : ' + info['title'] + '\n' + '링크 : ' + info[
+                    'url'] + '\n\n')
                 message += temp
 
         kakaotalk.send(data['chat_name'], message)
 
+
 if __name__ == '__main__':
     function()
-    # schedule.every().day.at("09:00").do(function)
+    # schedule.every().day.at("20:19").do(function)
     # while True:
     #     schedule.run_pending()
-    #     time.sleep(1)
