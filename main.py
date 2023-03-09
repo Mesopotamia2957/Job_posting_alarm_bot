@@ -4,15 +4,14 @@ import schedule
 
 kakao_enterprise = "https://careers.kakaoenterprise.com/go/Category_All/546844/"
 pschool = "https://www.patentschool.co.kr/post/list.php?g=mo&cate=1"  # 윤태웅 변리사스쿨 모의고사
+daangn = "https://team.daangn.com/jobs/"
 
+# service_data = [{'user': '박재욱', 'company': ['kakao_enterprise', 'naver'], 'chat_name': "~_~ ෆ"},
+#                 {'user': '윤태웅', 'company': ['pschool'], 'chat_name': "변리사스쿨 모의고사 알림"}]
 
-service_data = [{'user': '박재욱', 'company': ['kakao_enterprise', 'naver'], 'chat_name': "~_~ ෆ"},
-                {'user': '윤태웅', 'company': ['pschool'], 'chat_name': "변리사스쿨 모의고사 알림"}]
-
-# service_data = [{'user': '박재욱', 'company': ['kakao_enterprise', 'naver'], 'chat_name': "~_~ ෆ"}]
+service_data = [{'user': '박재욱', 'company': ['kakao_enterprise', 'naver', 'daangn'], 'chat_name': "~_~ ෆ"}]
 
 date = datetime.now().date()
-
 
 def function():
     for data in service_data:
