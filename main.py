@@ -21,17 +21,17 @@ def function():
         for c in company:
             result = crawling.webpage(c)
 
-        message = '%s 정보입니다.\n' % date
-        for info in result:
-            if data['chat_name'] == "변리사스쿨 모의고사 알림":
-                temp = ('게시글 : ' + info['title'] + '\n' + '링크 : ' + info['url'] + '\n\n')
-                message += temp
-            else:
-                temp = ('기업 : ' + info['company'] + '\n' + '공고명 : ' + info['title'] + '\n' + '링크 : ' + info[
-                    'url'] + '\n\n')
-                message += temp
+            message = '%s 정보입니다.\n' % date
+            for info in result:
+                if data['chat_name'] == "변리사스쿨 모의고사 알림":
+                    temp = ('게시글 : ' + info['title'] + '\n' + '링크 : ' + info['url'] + '\n\n')
+                    message += temp
+                else:
+                    temp = ('기업 : ' + info['company'] + '\n' + '공고명 : ' + info['title'] + '\n' + '링크 : ' + info[
+                        'url'] + '\n\n')
+                    message += temp
 
-        kakaotalk.send(data['chat_name'], message)
+            kakaotalk.send(data['chat_name'], message)
 
 
 if __name__ == '__main__':
